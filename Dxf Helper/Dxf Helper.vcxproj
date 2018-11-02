@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="base_memroy.hpp" />
+    <ClInclude Include="base_message.hpp" />
     <ClInclude Include="base_utils.hpp" />
     <ClInclude Include="game_astar.hpp" />
     <ClInclude Include="game_calls.hpp" />

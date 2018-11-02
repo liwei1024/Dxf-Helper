@@ -4,3 +4,7 @@ extern DWORD g_game_process_id;
 extern DWORD g_game_main_thread_id;
 extern HANDLE g_driver_handle;
 extern HWND g_self_window_handle;
+extern DWORD g_self_main_thread_id;
+
+
+extern std::string g_self_file_path;

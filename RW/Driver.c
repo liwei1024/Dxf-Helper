@@ -4,7 +4,6 @@
 #define ACTIVE_PROCESS_LINK 0x188
 
 NTKERNELAPI PVOID PsGetProcessSectionBaseAddress(__in PEPROCESS Process);
-NTKERNELAPI UCHAR* PsGetProcessImageFileName(PEPROCESS Process);
 
 PLOAD_IMAGE_NOTIFY_ROUTINE NotifyImageLoadCallback(PUNICODE_STRING w_FullImageName, HANDLE w_ProcessId, PIMAGE_INFO w_ImageInfo)
 {
