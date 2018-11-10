@@ -77,12 +77,12 @@ static INT getSCan(INT keyCode)
 
 static VOID keyDown(INT keyCode)
 {
-	KeybdEvent(keyCode, 0, 0, 0);
+	//KeybdEvent(keyCode, 0, 0, 0);
 }
 
 static VOID keyUp(INT keyCode)
 {
-	KeybdEvent(keyCode, 0, KEYEVENTF_KEYUP, 0);
+	//KeybdEvent(keyCode, 0, KEYEVENTF_KEYUP, 0);
 }
 
 static VOID doKeyPress(INT keyCode, INT s = 0)
@@ -203,7 +203,7 @@ static inline HANDLE load_driver(const char *path, const char *derver_name)
 	std::string 驱动服务名(derver_name);
 	驱动服务名 = "\\\\.\\" + 驱动服务名;
 
-	schSCManager = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
+	schSCManager = OpenSCManagerA(NULL, NULL, SC_MANAGER_ALL_ACCESS);
 	if (schSCManager == NULL)
 	{
 		red_print("OpenSCManager() Faild %d ! \n", GetLastError());
@@ -246,7 +246,7 @@ static inline HANDLE load_driver(const char *path, const char *derver_name)
 			exit(0);
 		}
 	}
-	bRet = StartService(schService, NULL, NULL);
+	bRet = StartServiceA(schService, NULL, NULL);
 	if (!bRet)
 	{
 		DWORD dwRtn = GetLastError();
@@ -369,4 +369,26 @@ static inline bool delete_self_file()
 	}
 	//VMProtectEnd();
 	return result;
+}
+
+static inline std::vector<byte> get_call_bytes(LPVOID call_address)
+{
+	size_t call_size = 0;
+	std::vector<byte> call_bytes;
+	while (true)
+	{
+		if (
+			*(byte*)((DWORD_PTR)call_address + (call_size + 0)) == 0xcc &&
+			*(byte*)((DWORD_PTR)call_address + (call_size + 1)) == 0xcc &&
+			*(byte*)((DWORD_PTR)call_address + (call_size + 2)) == 0xcc &&
+			*(byte*)((DWORD_PTR)call_address + (call_size + 3)) == 0xcc &&
+			*(byte*)((DWORD_PTR)call_address + (call_size + 4)) == 0xcc)
+		{
+			break;
+		}
+		else {
+			call_bytes[call_size] = *(byte*)((DWORD_PTR)call_address + call_size);
+		}
+		call_size++;
+	}
 }

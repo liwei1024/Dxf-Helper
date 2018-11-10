@@ -57,10 +57,10 @@
     <ClInclude Include="game_hook.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="base_message.hpp">
+    <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="game_send_packet.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -219,7 +219,9 @@ NTSTATUS WriteBufferedIO(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 			}
 		}
 	}
-
+	Irp->IoStatus.Status = STATUS_SUCCESS;
+	Irp->IoStatus.Information = 0;
+	IoCompleteRequest(Irp, IO_NO_INCREMENT);
 	return NtStatus;
 }
 

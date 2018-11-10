@@ -149,15 +149,16 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="base_memroy.hpp" />
-    <ClInclude Include="base_message.hpp" />
     <ClInclude Include="base_utils.hpp" />
     <ClInclude Include="game_astar.hpp" />
     <ClInclude Include="game_calls.hpp" />
     <ClInclude Include="game_hook.hpp" />
+    <ClInclude Include="game_send_packet.hpp" />
     <ClInclude Include="game_status_0.h" />
     <ClInclude Include="game_status_1.h" />
     <ClInclude Include="game_status_2.h" />

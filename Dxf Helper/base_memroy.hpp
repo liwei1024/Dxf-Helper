@@ -36,6 +36,7 @@ template<typename T> static inline T read(DWORD_PTR base_address)
 {
 	T buffer = T();
 	ReadStruct rStruct{ (DWORD_PTR)&buffer, (DWORD_PTR)base_address, sizeof(buffer), (uint32_t)GetCurrentProcessId(), g_game_process_id, NULL, PROTO_NORMAL_READ };
+	//pink_print("%d %d %d", base_address,(DWORD)g_driver_handle, g_game_process_id);
 	WriteFile(g_driver_handle, (LPCVOID)&rStruct, sizeof(ReadStruct), NULL, NULL);
 	return buffer;
 }
